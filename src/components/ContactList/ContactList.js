@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../contactsSlice';
-
 import './ContactList.module.css';
 
 function ContactList({ contacts }) {
