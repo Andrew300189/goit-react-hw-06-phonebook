@@ -1,14 +1,15 @@
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact, deleteContact, updateFilter } from '../contactsSlice';
+import { addContact, deleteContact, updateFilter } from '../../redux/contactsSlice';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
+import { selectContacts, selectState } from '../../redux/selectors';
 import './App.module.css';
 
 function App() {
-  const contacts = useSelector((state) => state.contacts.items);
-  const filter = useSelector((state) => state.contacts.filter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectState);
   const dispatch = useDispatch();
 
   const isContactExist = (name) => {
