@@ -3,7 +3,6 @@ import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
 import './App.module.css';
 
-
 function App() {
   return (
     <div>
