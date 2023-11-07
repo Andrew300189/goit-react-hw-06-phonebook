@@ -3,8 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from '../../redux/contactsSlice';
 
 function ContactList() {
-  const contacts = useSelector((state) => state.contacts.items);
   const dispatch = useDispatch();
+  const contacts = useSelector((state) => state.contacts.items);
+  const filter = useSelector((state) => state.contacts.filter);
+
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   const handleDeleteContact = (id) => {
     dispatch(deleteContact(id));
@@ -12,7 +17,7 @@ function ContactList() {
 
   return (
     <ul>
-      {contacts.map((contact) => (
+      {filteredContacts.map((contact) => (
         <li key={contact.id} className="contact-item">
           {contact.name}: {contact.number}
           <button
